@@ -16,7 +16,7 @@
   --b: rgba(65,90,119,.4); --bh: rgba(244,140,6,.5);
   --ok: #2ec4b6; --ko: #ef476f;
   --sh: 0 8px 32px rgba(0,0,0,.5); --sg: 0 0 40px rgba(244,140,6,.15);
-  --sw: clamp(340px,32vw,460px); --r: 16px; --rs: 10px;
+  --sw: clamp(360px,34vw,480px); --r: 16px; --rs: 10px;
 }
 * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 html,body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--t); overflow:hidden; height:100vh; width:100vw; touch-action:manipulation; }
@@ -27,7 +27,7 @@ html,body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--t)
 /* Sidebar */
 .sidebar { width:var(--sw); background:var(--sb); display:flex; flex-direction:column; border-right:1px solid var(--b); z-index:10; flex-shrink:0; transition:transform .4s cubic-bezier(.22,1,.36,1); position:relative; overflow:hidden; }
 .sidebar::after { content:''; position:absolute; top:0; left:0; right:0; height:200px; background:linear-gradient(180deg,rgba(244,140,6,.08),transparent); pointer-events:none; z-index:0; }
-.sidebar-header { padding:24px 22px 18px; border-bottom:1px solid var(--b); background:linear-gradient(135deg,rgba(13,17,23,.95),rgba(17,24,39,.95)); display:flex; align-items:center; gap:14px; position:relative; z-index:1; backdrop-filter:blur(20px); }
+.sidebar-header { padding:22px 20px 16px; border-bottom:1px solid var(--b); background:linear-gradient(135deg,rgba(13,17,23,.95),rgba(17,24,39,.95)); display:flex; align-items:center; gap:14px; position:relative; z-index:1; backdrop-filter:blur(20px); }
 .header-icon-wrap { position:relative; flex-shrink:0; }
 .header-icon { width:48px; height:48px; border-radius:14px; object-fit:cover; box-shadow:0 4px 16px rgba(244,140,6,.25); border:2px solid rgba(255,255,255,.08); }
 .header-icon-glow { position:absolute; inset:-4px; border-radius:18px; background:linear-gradient(135deg,var(--p),var(--ko)); opacity:.3; filter:blur(12px); z-index:-1; animation:iG 3s ease-in-out infinite alternate; }
@@ -39,7 +39,7 @@ html,body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--t)
 .sidebar-header .badge { display:inline-flex; align-items:center; gap:5px; margin-top:8px; padding:4px 12px; background:linear-gradient(135deg,var(--pd),var(--p)); color:#fff; font-size:.65rem; font-weight:700; border-radius:20px; text-transform:uppercase; letter-spacing:.8px; box-shadow:0 2px 12px rgba(244,140,6,.3); }
 
 /* Progress */
-.trip-progress { padding:14px 22px 10px; border-bottom:1px solid var(--b); background:rgba(17,24,39,.5); backdrop-filter:blur(10px); position:relative; z-index:1; }
+.trip-progress { padding:14px 20px 10px; border-bottom:1px solid var(--b); background:rgba(17,24,39,.5); backdrop-filter:blur(10px); position:relative; z-index:1; }
 .progress-label { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
 .progress-label span { font-size:.68rem; font-weight:600; color:var(--tm); text-transform:uppercase; letter-spacing:.8px; }
 .progress-label .pd { font-size:.72rem; font-weight:700; color:var(--a); }
@@ -48,7 +48,7 @@ html,body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--t)
 .progress-fill::after { content:''; position:absolute; right:0; top:0; bottom:0; width:20px; background:linear-gradient(90deg,transparent,rgba(255,255,255,.4)); border-radius:0 10px 10px 0; }
 
 /* Filters */
-.sidebar-filters { padding:14px 18px; border-bottom:1px solid var(--b); display:flex; gap:8px; flex-wrap:wrap; position:relative; z-index:1; background:rgba(13,17,23,.6); }
+.sidebar-filters { padding:14px 16px; border-bottom:1px solid var(--b); display:flex; gap:8px; flex-wrap:wrap; position:relative; z-index:1; background:rgba(13,17,23,.6); }
 .filter-chip { display:flex; align-items:center; gap:6px; padding:7px 14px; background:rgba(65,90,119,.15); border:1px solid var(--b); border-radius:24px; font-size:.74rem; font-weight:500; color:var(--tm); cursor:pointer; transition:all .25s cubic-bezier(.22,1,.36,1); user-select:none; white-space:nowrap; position:relative; overflow:hidden; }
 .filter-chip::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,var(--p),var(--pd)); opacity:0; transition:opacity .25s; z-index:-1; }
 .filter-chip:hover { border-color:var(--bh); color:var(--t); transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,.2); }
@@ -58,36 +58,42 @@ html,body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--t)
 .filter-chip svg { width:14px; height:14px; opacity:.8; }
 
 /* Days */
-.days-list { flex:1; overflow-y:auto; padding:14px 16px 24px; overscroll-behavior:contain; position:relative; z-index:1; }
+.days-list { flex:1; overflow-y:auto; padding:14px 14px 24px; overscroll-behavior:contain; position:relative; z-index:1; }
 .days-list::-webkit-scrollbar { width:4px; }
 .days-list::-webkit-scrollbar-track { background:transparent; }
 .days-list::-webkit-scrollbar-thumb { background:rgba(65,90,119,.4); border-radius:4px; }
 .days-list::-webkit-scrollbar-thumb:hover { background:rgba(65,90,119,.7); }
 
-.day-card { background:var(--card); border:1px solid var(--b); border-radius:var(--r); margin-bottom:12px; padding:16px 18px; cursor:pointer; transition:all .35s cubic-bezier(.22,1,.36,1); position:relative; overflow:hidden; opacity:0; transform:translateY(12px); animation:cE .5s cubic-bezier(.22,1,.36,1) forwards; }
+/* Card with image */
+.day-card { background:var(--card); border:1px solid var(--b); border-radius:var(--r); margin-bottom:12px; cursor:pointer; transition:all .35s cubic-bezier(.22,1,.36,1); position:relative; overflow:hidden; opacity:0; transform:translateY(12px); animation:cE .5s cubic-bezier(.22,1,.36,1) forwards; }
 @keyframes cE { to { opacity:1; transform:translateY(0); } }
-.day-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:linear-gradient(180deg,var(--p),var(--a)); border-radius:var(--r) 0 0 var(--r); opacity:0; transition:opacity .3s; }
-.day-card::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(244,140,6,.03),transparent 60%); opacity:0; transition:opacity .3s; pointer-events:none; }
-.day-card:hover { transform:translateX(4px) translateY(-2px); border-color:var(--bh); box-shadow:var(--sh),var(--sg); background:var(--ch); }
-.day-card:hover::before,.day-card:hover::after { opacity:1; }
-.day-card.active { border-color:var(--a); background:linear-gradient(135deg,rgba(255,186,8,.06),var(--ch)); box-shadow:0 0 0 1px rgba(255,186,8,.2),var(--sh),0 0 40px rgba(255,186,8,.08); transform:translateX(4px); }
+.day-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:linear-gradient(180deg,var(--p),var(--a)); border-radius:var(--r) 0 0 var(--r); opacity:0; transition:opacity .3s; z-index:3; }
+.day-card:hover { transform:translateX(4px) translateY(-2px); border-color:var(--bh); box-shadow:var(--sh),var(--sg); }
+.day-card:hover::before { opacity:1; }
+.day-card.active { border-color:var(--a); box-shadow:0 0 0 1px rgba(255,186,8,.2),var(--sh),0 0 40px rgba(255,186,8,.08); transform:translateX(4px); }
 .day-card.active::before { opacity:1; background:linear-gradient(180deg,var(--a),var(--p)); }
 
-.day-card-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px; gap:12px; }
-.day-number { display:flex; align-items:center; justify-content:center; width:34px; height:34px; background:linear-gradient(135deg,var(--pd),var(--p)); color:#fff; font-weight:800; font-size:.82rem; border-radius:10px; flex-shrink:0; box-shadow:0 2px 8px rgba(244,140,6,.3); position:relative; overflow:hidden; }
-.day-number::after { content:''; position:absolute; top:0; left:0; right:0; height:50%; background:linear-gradient(180deg,rgba(255,255,255,.15),transparent); }
-.day-card.active .day-number { background:linear-gradient(135deg,var(--a),#ff9f1c); color:var(--bg); box-shadow:0 2px 12px rgba(255,186,8,.4); }
-.day-title-group { flex:1; min-width:0; }
-.day-title { font-family:'Space Grotesk',sans-serif; font-size:.92rem; font-weight:600; color:var(--t); line-height:1.3; letter-spacing:-.2px; }
-.day-route { display:flex; align-items:center; gap:5px; font-size:.72rem; color:var(--tm); margin-top:4px; font-weight:500; }
-.day-route svg { width:12px; height:12px; opacity:.6; }
-.day-tags { display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; }
+.day-card-image-wrap { position:relative; height:140px; overflow:hidden; border-radius:var(--r) var(--r) 0 0; }
+.day-card-image { width:100%; height:100%; object-fit:cover; transition:transform .6s cubic-bezier(.22,1,.36,1); }
+.day-card:hover .day-card-image { transform:scale(1.08); }
+.day-card-image-overlay { position:absolute; inset:0; background:linear-gradient(90deg,rgba(10,14,23,.99) 5%,rgba(10,14,23,.65) 35%,rgba(10,14,23,.30) 65%,transparent 100%); z-index:1; }
+.day-card-image-top { position:absolute; top:12px; left:14px; z-index:2; display:flex; align-items:center; gap:8px; }
+.day-number-badge { display:flex; align-items:center; justify-content:center; width:32px; height:32px; background:linear-gradient(135deg,var(--pd),var(--p)); color:#fff; font-weight:800; font-size:.82rem; border-radius:10px; box-shadow:0 2px 8px rgba(244,140,6,.3); position:relative; overflow:hidden; }
+.day-number-badge::after { content:''; position:absolute; top:0; left:0; right:0; height:50%; background:linear-gradient(180deg,rgba(255,255,255,.15),transparent); }
+.day-card.active .day-number-badge { background:linear-gradient(135deg,var(--a),#ff9f1c); color:var(--bg); box-shadow:0 2px 12px rgba(255,186,8,.4); }
+.day-card-image-bottom { position:absolute; bottom:12px; left:14px; right:14px; z-index:2; }
+.day-card-image-bottom .day-title { font-family:'Space Grotesk',sans-serif; font-size:1rem; font-weight:700; color:#fff; line-height:1.2; letter-spacing:-.2px; text-shadow:0 2px 8px rgba(0,0,0,.6); }
+.day-card-image-bottom .day-route { display:flex; align-items:center; gap:5px; font-size:.72rem; color:rgba(255,255,255,.85); margin-top:4px; font-weight:500; text-shadow:0 1px 4px rgba(0,0,0,.5); }
+.day-card-image-bottom .day-route svg { width:12px; height:12px; opacity:.8; }
+
+.day-card-body { padding:12px 14px 14px; }
+.day-tags { display:flex; gap:6px; flex-wrap:wrap; }
 .tag { font-size:.6rem; padding:4px 10px; border-radius:8px; font-weight:600; text-transform:uppercase; letter-spacing:.4px; border:1px solid transparent; transition:all .2s; }
 .tag-attr { background:rgba(244,140,6,.1); color:#ffb703; border-color:rgba(244,140,6,.2); }
 .tag-camp { background:rgba(46,196,182,.1); color:var(--ok); border-color:rgba(46,196,182,.2); }
 .tag-drive { background:rgba(139,155,180,.1); color:var(--tm); border-color:rgba(139,155,180,.15); }
 
-.day-details { margin-top:14px; padding-top:14px; border-top:1px solid var(--b); display:none; animation:dR .35s cubic-bezier(.22,1,.36,1); }
+.day-details { margin-top:12px; padding-top:12px; border-top:1px solid var(--b); display:none; animation:dR .35s cubic-bezier(.22,1,.36,1); }
 @keyframes dR { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
 .day-card.active .day-details { display:block; }
 .detail-section { margin-bottom:12px; }
@@ -97,9 +103,29 @@ html,body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--t)
 .detail-list { font-size:.78rem; color:var(--t); line-height:1.7; padding-left:18px; list-style:none; }
 .detail-list li { position:relative; margin-bottom:3px; padding-left:4px; }
 .detail-list li::before { content:''; position:absolute; left:-14px; top:9px; width:5px; height:5px; border-radius:50%; background:var(--p); opacity:.6; }
+.poi-item { cursor:pointer; transition:color .2s; }
+.poi-item:hover { color:var(--a); }
+.poi-coords { font-size:.65rem; color:var(--tm); opacity:.8; font-family:monospace; margin-left:4px; }
 .btn-maps { display:inline-flex; align-items:center; gap:8px; margin-top:12px; padding:10px 16px; background:linear-gradient(135deg,var(--s),#0077b6); color:#fff; text-decoration:none; border-radius:var(--rs); font-size:.76rem; font-weight:600; transition:all .25s; box-shadow:0 2px 12px rgba(0,180,216,.25); border:none; cursor:pointer; }
 .btn-maps:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,180,216,.35); filter:brightness(1.1); }
 .btn-maps svg { width:14px; height:14px; }
+
+/* Expanded details */
+.day-expanded { display:none; margin-top:12px; padding-top:12px; border-top:1px solid var(--b); animation:dR .35s cubic-bezier(.22,1,.36,1); }
+.day-card.expanded .day-expanded { display:block; }
+.expanded-section { margin-bottom:16px; }
+.expanded-section:last-child { margin-bottom:0; }
+.expanded-title { font-family:'Space Grotesk',sans-serif; font-size:.72rem; font-weight:700; color:var(--a); text-transform:uppercase; letter-spacing:.8px; margin-bottom:10px; }
+.expanded-list { display:flex; flex-direction:column; gap:8px; }
+.expanded-item { padding:10px 12px; background:rgba(65,90,119,.1); border:1px solid var(--b); border-radius:var(--rs); transition:all .2s; cursor:pointer; }
+.expanded-item:hover { border-color:var(--bh); background:rgba(65,90,119,.15); }
+.expanded-item-name { font-size:.82rem; font-weight:600; color:var(--t); margin-bottom:4px; line-height:1.3; display:flex; align-items:center; gap:6px; }
+.expanded-item-desc { font-size:.74rem; color:var(--tm); line-height:1.6; }
+.expanded-item-coords { font-family:monospace; font-size:.68rem; color:var(--tm); opacity:.7; margin-top:4px; }
+.btn-expand { display:inline-flex; align-items:center; gap:6px; margin-top:10px; padding:8px 14px; background:rgba(255,186,8,.1); border:1px solid rgba(255,186,8,.2); border-radius:var(--rs); font-size:.74rem; color:var(--a); font-weight:600; cursor:pointer; transition:all .2s; font-family:'Inter',sans-serif; }
+.btn-expand:hover { background:rgba(255,186,8,.2); border-color:rgba(255,186,8,.4); transform:translateY(-1px); }
+.btn-expand svg { transition:transform .25s; }
+.day-card.expanded .btn-expand svg { transform:rotate(180deg); }
 
 /* Locate Me Button */
 .locate-btn {
@@ -151,12 +177,11 @@ html,body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--t)
 }
 
 /* Map */
-
 .map-wrapper { flex:1; position:relative; background:#0d1117; min-width:0; overflow:hidden; }
 #map { width:100%; height:100%; }
 
-/* Legend */
-.legend-panel { position:absolute; bottom:28px; right:28px; background:var(--glass); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border:1px solid var(--b); border-radius:var(--r); padding:16px 18px; z-index:5; box-shadow:var(--sh); min-width:210px; max-width:260px; transition:all .3s; }
+/* Legend — MOVED TO LEFT */
+.legend-panel { position:absolute; bottom:28px; left:28px; background:var(--glass); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border:1px solid var(--b); border-radius:var(--r); padding:16px 18px; z-index:5; box-shadow:var(--sh); min-width:210px; max-width:260px; transition:all .3s; }
 .legend-panel:hover { border-color:var(--bh); box-shadow:var(--sh),var(--sg); }
 .legend-title { font-family:'Space Grotesk',sans-serif; font-size:.72rem; font-weight:700; margin-bottom:10px; color:var(--a); text-transform:uppercase; letter-spacing:1px; }
 .legend-item { display:flex; align-items:center; gap:10px; font-size:.74rem; color:var(--t); margin-bottom:7px; }
@@ -165,6 +190,7 @@ html,body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--t)
 .legend-stop { background:linear-gradient(135deg,var(--ko),#ff6b6b); }
 .legend-camp { background:linear-gradient(135deg,var(--ok),#1dd1a1); }
 .legend-line { width:22px; height:3px; background:linear-gradient(90deg,var(--p),var(--a)); border-radius:3px; opacity:.9; flex-shrink:0; box-shadow:0 0 8px rgba(244,140,6,.3); }
+.legend-view { background:linear-gradient(135deg,#9b5de5,#f15bb5); }
 
 /* Stats */
 .stats-bar { position:absolute; top:20px; left:50%; transform:translateX(-50%); display:flex; gap:clamp(16px,2.5vw,32px); background:var(--glass); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border:1px solid var(--b); border-radius:var(--r); padding:12px 28px; z-index:5; box-shadow:var(--sh); transition:all .3s; }
@@ -188,7 +214,7 @@ html,body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--t)
 .gm-style .gm-style-iw-c { background:var(--card)!important; color:var(--t)!important; border-radius:var(--r)!important; padding:0!important; box-shadow:var(--sh),0 0 40px rgba(0,0,0,.4)!important; border:1px solid var(--b)!important; overflow:hidden!important; }
 .gm-style .gm-style-iw-d { overflow:hidden!important; padding:0!important; }
 .gm-style .gm-style-iw-t::after { background:var(--card)!important; }
-.gm-style .gm-ui-hover-effect { filter:invert(1)!important; opacity:.6!important; top:8px!important; right:8px!important; }
+.gm-style .gm-ui-hover-effect { display: none !important; }
 .iw-content { padding:18px 20px; max-width:300px; }
 .iw-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
 .iw-badge { display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; background:linear-gradient(135deg,var(--p),var(--a)); border-radius:8px; font-size:.75rem; font-weight:800; color:#fff; }
@@ -202,6 +228,18 @@ html,body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--t)
 .iw-link { display:inline-flex; align-items:center; gap:6px; margin-top:10px; padding:8px 14px; background:rgba(0,180,216,.1); border:1px solid rgba(0,180,216,.2); border-radius:8px; font-size:.74rem; color:var(--s); text-decoration:none; font-weight:600; transition:all .2s; }
 .iw-link:hover { background:rgba(0,180,216,.2); border-color:rgba(0,180,216,.4); }
 .iw-link svg { width:13px; height:13px; }
+.iw-coords { font-family:monospace; font-size:.7rem; color:var(--tm); margin-top:4px; }
+.iw-image-header { position:relative; height:130px; margin:-22px -20px 14px -20px; border-radius:18px 18px 0 0; overflow:hidden; background-size:cover; background-position:center; }
+.iw-image-header::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(10,14,23,.25) 0%,rgba(10,14,23,.9) 100%); }
+.iw-image-header-content { position:absolute; bottom:0; left:0; right:0; padding:14px 18px; z-index:2; display:flex; align-items:center; gap:10px; }
+.iw-image-header-content .iw-badge { flex-shrink:0; }
+.iw-image-header-content .iw-title-group { flex:1; min-width:0; }
+.iw-image-header-content .iw-title { color:#fff; text-shadow:0 2px 8px rgba(0,0,0,.7); }
+.iw-image-header-content .iw-day { color:var(--a); text-shadow:0 1px 4px rgba(0,0,0,.6); }
+.iw-close-btn { position:absolute; top:10px; right:10px; width:30px; height:30px; border-radius:50%; background:rgba(10,14,23,0.75); border:1px solid rgba(255,255,255,0.15); color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:10; box-shadow:0 2px 8px rgba(0,0,0,0.4); transition:all 0.2s ease; }
+.iw-close-btn:hover { background:rgba(239,71,111,0.9); transform:scale(1.1); }
+.iw-close-btn svg { width:14px; height:14px; }
+
 
 /* Loader */
 .map-loader { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:var(--bg); z-index:20; transition:opacity .6s ease; }
@@ -216,31 +254,15 @@ html,body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--t)
 @keyframes lS { 0%{transform:translateX(-120%)} 100%{transform:translateX(300%)} }
 .loader-text { margin-top:16px; font-size:.78rem; color:var(--tm); letter-spacing:.5px; }
 
-/* Expanded details */
-.day-expanded { display:none; margin-top:14px; padding-top:14px; border-top:1px solid var(--b); animation:dR .35s cubic-bezier(.22,1,.36,1); }
-.day-card.expanded .day-expanded { display:block; }
-.expanded-section { margin-bottom:16px; }
-.expanded-section:last-child { margin-bottom:0; }
-.expanded-title { font-family:'Space Grotesk',sans-serif; font-size:.72rem; font-weight:700; color:var(--a); text-transform:uppercase; letter-spacing:.8px; margin-bottom:10px; }
-.expanded-list { display:flex; flex-direction:column; gap:8px; }
-.expanded-item { padding:10px 12px; background:rgba(65,90,119,.1); border:1px solid var(--b); border-radius:var(--rs); transition:all .2s; }
-.expanded-item:hover { border-color:var(--bh); background:rgba(65,90,119,.15); }
-.expanded-item-name { font-size:.82rem; font-weight:600; color:var(--t); margin-bottom:4px; line-height:1.3; }
-.expanded-item-desc { font-size:.74rem; color:var(--tm); line-height:1.6; }
-.btn-expand { display:inline-flex; align-items:center; gap:6px; margin-top:10px; padding:8px 14px; background:rgba(255,186,8,.1); border:1px solid rgba(255,186,8,.2); border-radius:var(--rs); font-size:.74rem; color:var(--a); font-weight:600; cursor:pointer; transition:all .2s; font-family:'Inter',sans-serif; }
-.btn-expand:hover { background:rgba(255,186,8,.2); border-color:rgba(255,186,8,.4); transform:translateY(-1px); }
-.btn-expand svg { transition:transform .25s; }
-.day-card.expanded .btn-expand svg { transform:rotate(180deg); }
-
 /* Tablet */
 @media (max-width:1023px) and (min-width:769px) {
-  :root { --sw:310px; }
+  :root { --sw:320px; }
   .sidebar-header { padding:18px 16px 14px; }
   .sidebar-header h1 { font-size:1.1rem; }
   .trip-progress { padding:12px 16px 8px; }
   .sidebar-filters { padding:12px 14px; }
-  .day-card { padding:14px 16px; }
-  .legend-panel { bottom:18px; right:18px; padding:14px 16px; min-width:190px; }
+  .day-card-image-wrap { height:120px; }
+  .legend-panel { bottom:18px; left:18px; padding:14px 16px; min-width:190px; }
   .stats-bar { top:14px; padding:10px 20px; gap:16px; }
 }
 
@@ -258,13 +280,14 @@ html,body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--t)
   .sidebar-filters { padding:10px 14px; gap:6px; }
   .filter-chip { padding:6px 12px; font-size:.72rem; }
   .days-list { padding:8px 14px 20px; max-height:calc(88vh - 180px); }
-  .day-card { padding:14px 16px; margin-bottom:10px; animation:none; opacity:1; transform:none; }
+  .day-card { margin-bottom:10px; animation:none; opacity:1; transform:none; }
   .day-card:hover { transform:none; }
-  .day-title { font-size:.88rem; }
+  .day-card-image-wrap { height:120px; }
+  .day-title { font-size:.9rem; }
   .map-wrapper { height:100vh; }
   .mobile-overlay { display:block; }
   .mobile-toggle { display:flex; }
-  .legend-panel { bottom:100px; right:14px; left:auto; min-width:auto; max-width:200px; padding:14px 16px; border-radius:var(--rs); }
+  .legend-panel { bottom:100px; left:14px; right:auto; min-width:auto; max-width:200px; padding:14px 16px; border-radius:var(--rs); }
   .locate-btn {
     bottom: 90px;
     left: 28px;
@@ -288,11 +311,11 @@ html,body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--t)
   .sidebar-header h1 { font-size:1.05rem; }
   .sidebar-header .subtitle { font-size:.72rem; }
   .filter-chip { padding:5px 10px; font-size:.68rem; }
-  .day-number { width:30px; height:30px; font-size:.78rem; }
+  .day-number-badge { width:28px; height:28px; font-size:.75rem; }
   .day-title { font-size:.84rem; }
   .tag { font-size:.56rem; padding:3px 7px; }
   .btn-maps { padding:8px 14px; font-size:.72rem; }
-  .legend-panel { bottom:90px; right:10px; padding:12px 14px; border-radius:12px; }
+  .legend-panel { bottom:90px; left:10px; padding:12px 14px; border-radius:12px; }
   .locate-btn {
     bottom: 82px;
     left: 20px;
@@ -314,6 +337,7 @@ html,body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--t)
   .locate-btn { bottom: 82px; left: 20px; }
 }
 </style>
+<base target="_blank">
 <base target="_blank">
 </head>
 <body>
@@ -358,6 +382,11 @@ Los Angeles ↔ San Francisco
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
 <span>Percorso</span>
 </label>
+<label class="filter-chip active" onclick="toggleFilter(this,'viewpoints')">
+<input type="checkbox" checked data-filter="viewpoints">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+<span>Viste Panoramiche</span>
+</label>
 </div>
 <div class="days-list" id="daysList"></div>
 </aside>
@@ -394,7 +423,7 @@ Los Angeles ↔ San Francisco
 </div>
 <div class="stat-item">
 <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="var(--a)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-<div class="stat-value">3</div><div class="stat-label">Stati</div>
+<div class="stat-value">4</div><div class="stat-label">Stati</div>
 </div>
 </div>
 <div class="legend-panel">
@@ -402,6 +431,7 @@ Los Angeles ↔ San Francisco
 <div class="legend-item"><div class="legend-icon legend-stop">1</div><span>Tappe & Attrazioni</span></div>
 <div class="legend-item"><div class="legend-icon legend-camp">⛺</div><span>Dispersed Camping</span></div>
 <div class="legend-item"><div class="legend-line"></div><span>Percorso di Guida</span></div>
+<div class="legend-item"><div class="legend-icon legend-view">👁</div><span>Viste Panoramiche</span></div>
 </div>
 <button class="mobile-toggle" id="mobileToggle" onclick="toggleSidebar()">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -413,90 +443,90 @@ Itinerario
 const GOOGLE_MAPS_API_KEY = 'AIzaSyAZR61p7beKWg-PjctoZRflTZi8YSNAMeo';
 
 const itinerary = [
-{day:1,title:"Los Angeles → San Diego",coords:{lat:33.7455,lng:-117.8677},driveTime:"~2h",distance:"~190 km",attractions:[
-  {name:"Venice Beach",desc:"Iconico lungomare di Los Angeles famoso per il suo spirito bohémien. Lungo il Ocean Front Walk trovi skater, artisti di strada e negozi alternativi. Il canale artificiale e la spiaggia ampia lo rendono perfetto per una passeggiata mattutina."},
-  {name:"Santa Monica Pier",desc:"Storico molo del 1909 con giostre colorate e la celebre ruota panoramica. Il segno End of the Trail della Route 66 attira milioni di visitatori. Al tramonto il panorama sull'Oceano Pacifico è spettacolare."},
-  {name:"La Jolla Cove",desc:"Piccola baia incastonata tra scogliere dorate e acque cristalline. Famosa per l'osservazione di leoni marini che si riposano sulle rocce. I sentieri costieri offrono viste mozzafiato sul Pacifico."},
-  {name:"Sunset Cliffs",desc:"Scogliere a picco sull'oceano nel sud di San Diego, celebri per i tramonti infuocati. Il percorso pedonale serpeggia tra formazioni rocciose e pozze di marea. Un luogo romantico e naturale lontano dal caos urbano."},
-  {name:"Old Town",desc:"Quartiere storico considerato la culla della California. Case in stile messicano, ristoranti tex-mex autentici e negozi di artigianato rievocano l'atmosfera del vecchio West. Il parco storico offre reenactment gratuiti."}
-],camping:{name:"Cleveland National Forest (Laguna Mountain / Pine Valley) o Ocotillo Wells (BLM)",desc:"Laguna Mountain offre camping disperso tra pini e querce a 1.800 metri, con temperature gradevoli anche d'estate. Le aree primitive sono gratuite ma senza servizi. Ocotillo Wells è un'alternativa nel deserto per chi preferisce il caldo e le stelle."},campingCoords:{lat:32.867,lng:-116.467}},
-{day:2,title:"San Diego",coords:{lat:32.7157,lng:-117.1611},driveTime:null,distance:null,attractions:[
-  {name:"Balboa Park",desc:"Uno dei più grandi parchi urbani d'America con oltre 16 musei e giardini tematici. L'architettura spagnola coloniale revival delle facciate è mozzafiato. Il famoso zoo di San Diego si trova proprio qui."},
-  {name:"Coronado Island",desc:"Elegante isola collegata alla città dal ponte a cavalcavia. L'Hotel del Coronado, in stile vittoriano, è un monumento storico nazionale. Le spiagge dorate e l'atmosfera rilassata la rendono un gioiello."},
-  {name:"Quartiere Gaslamp",desc:"Centro storico e nightlife di San Diego con edifici vittoriani restaurati. Oltre 90 ristoranti, bar e locali jazz animano le sue strade. Di giorno è perfetto per lo shopping e l'architettura."},
-  {name:"Torrey Pines State Reserve",desc:"Riserva naturale con pini rari e sentieri sulla scogliera che dominano l'oceano. Il sentiero del Guy Fleming Trail è accessibile e offre panorami incredibili. Un'oasi di natura selvaggia a pochi minuti dalla città."}
-],camping:{name:"Cleveland National Forest o ai bordi dell'Anza-Borrego Desert",desc:"I bordi orientali dell'Anza-Borrego offrono camping BLM gratuito con viste spettacolari sul deserto. Porta tutta l'acqua necessaria, non ci sono fonti. Le notti sono silenziose e il cielo stellato è tra i più limpidi della California."},campingCoords:{lat:33.100,lng:-116.300}},
-{day:3,title:"San Diego → Joshua Tree",coords:{lat:33.8734,lng:-115.9010},driveTime:"~3h",distance:"~270 km",attractions:[
-  {name:"Anza-Borrego Desert (sculture Galleta Meadows)",desc:"Nel deserto più grande della California, 130 sculture metalliche di animali preistorici emergono dalla sabbia. L'opera dell'artista Ricardo Breceda crea un contrasto surreale con il paesaggio arido. Meglio visitarle all'alba o al tramonto."},
-  {name:"Skull Rock",desc:"Formazione rocciosa naturale a forma di teschio, una delle icone più fotografate del parco. Si trova a bordo strada ed è accessibile con una breve camminata. Al tramonto le ombre enfatizzano la forma inquietante."},
-  {name:"Hidden Valley",desc:"Anfiteatro naturale circondato da massi giganti, un tempo rifugio di banditi di bestiame. Un sentiero facile di 1,6 km attraversa il cuore della valle. I climbers la adorano per le sue vie di arrampicata."},
-  {name:"Keys View",desc:"Belvedere a 1.585 metri che offre una vista a 360 gradi sul Coachella Valley. Nelle giornate limpide si scorge persino il confine messicano. Il tramonto qui è tra i più spettacolari del parco."},
-  {name:"Cholla Cactus Garden",desc:"Foresta di cactus teddy bear che sembrano soffici ma nascondono spine micidiali. Il sentiero corto attraversa migliaia di esemplari illuminati dal sole del mattino. Un paesaggio alieno che sembra venire da un altro pianeta."}
-],camping:{name:"Dispersed camping BLM a Wonder Valley / Old Woman Springs Rd",desc:"Wonder Valley è una terra di nessuno nel deserto del Mojave con vecchie cabine abbandonate e infiniti spazi aperti. Il camping disperso è gratuito e regolamentato dalle norme BLM. Perfetto per chi cerca isolamento assoluto e tramonti infuocati."},campingCoords:{lat:34.150,lng:-116.400}},
-{day:4,title:"Joshua Tree → Grand Canyon South Rim",coords:{lat:35.9881,lng:-112.1251},driveTime:"~5-6h",distance:"~520 km",attractions:[
-  {name:"Deserto del Mojave",desc:"Il deserto più arido del Nord America, caratterizzato da distese di sabbia e cactus Joshua. La strada attraversa paesaggi lunari che sembrano non finire mai. Fai attenzione alle temperature estreme."},
-  {name:"Route 66 in Arizona",desc:"Il tratto storico della Mother Road attraversa cittadine fantasma e diner retrò. Hackberry e Seligman conservano l'atmosfera degli anni '50. Fermati per una foto con le auto d'epoca arrugginite."}
-],camping:{name:"Kaibab National Forest (FR 302/303/688 vicino Tusayan)",desc:"Le forestali 302 e 303 offrono decine di spiazzi per camper immersi nella pineta. Gratuito e a soli 15 minuti dall'ingresso South Rim. I cervi e i coyote sono frequenti visitatori al tramonto."},campingCoords:{lat:35.950,lng:-112.100}},
-{day:5,title:"Grand Canyon South Rim",coords:{lat:36.0544,lng:-112.1401},driveTime:null,distance:null,attractions:[
-  {name:"Mather Point",desc:"Il primo belvedere che incontrano la maggior parte dei visitatori, con viste iconiche sul canyon. La piattaforma di osservazione è accessibile e ben attrezzata. Perfetto per l'alba quando le pareti si tingono di rosso."},
-  {name:"Yavapai Point",desc:"Offre una delle vedute più geologicamente istruttive del canyon grazie al museo sul bordo. Le vetrine spiegano la formazione delle rocce sottostanti. Il panorama si estende per oltre 30 km in giornate limpide."},
-  {name:"Rim Trail",desc:"Sentiero panoramico di 20 km che segue il bordo del canyon. Il tratto tra Mather Point e Yavapai è pianeggiante e accessibile a tutti. Ogni curva regala angoli diversi e prospettive uniche."},
-  {name:"Hopi Point",desc:"Considerato uno dei migliori punti per il tramonto sul South Rim. Si affaccia direttamente sul fiume Colorado in fondo al canyon. Meno affollato dei punti principali, offre intimità e silenzio."},
-  {name:"Desert View Watchtower",desc:"Torre di pietra in stile Anasazi progettata dall'architetto Mary Colter. Salendo i 4 piani si gode di una vista a 360 gradi che abbraccia il fiume Colorado. Gli affreschi interni sono opera di artisti Hopi."}
-],camping:{name:"Kaibab National Forest",desc:"Soggiorna nella stessa zona del giorno precedente per esplorare il canyon all'alba. Le temperature notturne sono fresche anche in agosto, porta un sacco a pelo pesante. Il silenzio della foresta contrasta con l'immensità del canyon vicino."},campingCoords:{lat:36.000,lng:-112.100}},
-{day:6,title:"Grand Canyon → Page → Zion",coords:{lat:36.9147,lng:-111.4558},driveTime:"~4-5h",distance:"~380 km",attractions:[
-  {name:"Antelope Canyon",desc:"Slot canyon di arenaria rossa scavato dall'acqua nel corso di millenni. I fasci di luce che filtrano dall'alto creano giochi di colore surreali. L'accesso è consentito solo con guide Navajo."},
-  {name:"Horseshoe Bend",desc:"Curva a ferro di cavallo del fiume Colorado incastonata tra pareti di roccia rossa alta 300 metri. Il punto panoramico è a pochi minuti di cammino dal parcheggio. Al tramonto i colori del canyon diventano incandescenti."}
-],camping:{name:"Kanab/Virgin, BLM Kolob Terrace Road o Dixie National Forest",desc:"Kolob Terrace Road offre camping disperso con viste su formazioni rocciose rosse e arancioni. Dixie National Forest è un'alternativa più fresca tra abeti rossi. Entrambe le opzioni sono strategiche per Zion e Page."},campingCoords:{lat:37.200,lng:-113.050}},
-{day:7,title:"Zion National Park",coords:{lat:37.2982,lng:-113.0263},driveTime:null,distance:null,attractions:[
-  {name:"The Narrows",desc:"Il sentiero più iconico di Zion attraversa il fiume Virgin tra pareti di roccia alte 300 metri. In alcuni tratti devi camminare nell'acqua fino alla vita. È un'esperienza immersiva unica nel suo genere."},
-  {name:"Emerald Pools",desc:"Tre piscine naturali collegate da cascate che scendono tra la vegetazione. Il sentiero è moderato e offre viste spettacolari sul canyon. Le pozze verdi smeraldo danno il nome all'itinerario."},
-  {name:"Angels Landing",desc:"Trek impegnativo con catene di sicurezza su un crinale stretto a 450 metri d'altezza. La vista dalla cima abbraccia tutto il canyon di Zion. Non è consigliato a chi soffre di vertigini."},
-  {name:"Canyon Overlook Trail",desc:"Breve sentiero di 1,6 km che conduce a un belvedere mozzafiato sulla gola di Pine Creek. Perfetto all'alba quando il sole illumina le pareti rosse. Molto meno affollato dei sentieri principali."}
-],camping:{name:"Stessa zona (Kanab/Virgin BLM)",desc:"Resta nella stessa area per evitare di spostare il campo base. Da qui raggiungi facilmente l'ingresso di Zion in 30 minuti. Le albe nel deserto circostante valgono una sveglia all'indomani."},campingCoords:{lat:37.200,lng:-113.050}},
-{day:8,title:"Zion → Las Vegas",coords:{lat:36.1699,lng:-115.1398},driveTime:"~3h",distance:"~270 km",attractions:[
-  {name:"Valley of Fire State Park",desc:"Il parco statale più antico del Nevada, famoso per le formazioni di arenaria rossa intensa. Petrogliﬁ di 2.000 anni fa decorano le rocce. Il paesaggio sembra Marte con sfumature di rosso e arancione."},
-  {name:"The Strip",desc:"Il cuore pulsante di Las Vegas con i suoi hotel-casino monumentali. Fontane, vulcani e piramidi si susseguono per 6 km. Di sera l'illuminazione crea un'atmosfera surreale e unica al mondo."},
-  {name:"Fremont Street",desc:"Il centro storico di Las Vegas con il famoso baldacchino LED di 5 km. Artisti di strada, zip line e musica dal vivo animano ogni sera. Più autentica e meno costosa della Strip."}
-],camping:{name:"Spring Mountains National Recreation Area (Lee Canyon / Kyle Canyon)",desc:"A soli 45 minuti da Las Vegas, questa area offre un fresco rifugio montano a 2.500 metri. I campeggi sono attrezzati con tavoli e bagni. La temperatura è di 10-15 gradi inferiore rispetto alla città."},campingCoords:{lat:36.300,lng:-115.650}},
-{day:9,title:"Las Vegas → Death Valley",coords:{lat:36.5323,lng:-116.9325},driveTime:"~2.5h",distance:"~220 km",attractions:[
-  {name:"Zabriskie Point",desc:"Belvedere su formazioni di fango vulcanico erose in guglie e creste color ocra. Al mattino presto le ombre creano contrasti drammatici. Sembra un paesaggio marziano dipinto con colori pastello."},
-  {name:"Badwater Basin",desc:"Il punto più basso del Nord America a 86 metri sotto il livello del mare. Un lago salato essiccato crea un esagonale bianco infinito. La temperatura qui ha raggiunto i 56,7°C."},
-  {name:"Artist's Drive",desc:"Strada panoramica di 14 km che attraversa colline minerali colorate. La Palette mostra sfumature di verde, rosa, viola e giallo. Il contrasto con il deserto circostante è sorprendente."},
-  {name:"Mesquite Flat Sand Dunes",desc:"Dune di sabbia che si estendono fino all'orizzonte, incorniciate da montagne. Il meglio è all'alba quando la luce laterale crea ombre profonde. Un classico paesaggio da deserto del Sahara americano."}
-],camping:{name:"Wildrose o Panamint Springs (in quota)",desc:"Wildrose si trova a 1.200 metri, dove le temperature notturne sono sopportabili anche in piena estate. Panamint Springs offre un campeggio con servizi base e un ristorante rustico. Entrambi sono strategici per esplorare la valle all'alba."},campingCoords:{lat:36.450,lng:-117.100}},
-{day:10,title:"Death Valley → Alabama Hills / Lone Pine",coords:{lat:36.6062,lng:-118.1004},driveTime:"~2.5h",distance:"~180 km",attractions:[
-  {name:"Mobius Arch",desc:"Arco naturale di granito che incornicia perfettamente il Monte Whitney. È il più fotografato degli archi delle Alabama Hills. L'alba illumina la montagna attraverso l'apertura rocciosa."},
-  {name:"Vista Mt. Whitney",desc:"Il punto più alto degli Stati Uniti continentali a 4.421 metri. Dalle Alabama Hills si gode di una vista frontale mozzafiato. Il contrasto tra il deserto sottostante e la neve eterna è impressionante."}
-],camping:{name:"Alabama Hills (BLM, Movie Road)",desc:"Movie Road attraversa le formazioni rocciose dove Hollywood ha girato centinaia di western. Il camping BLM è gratuito e permette di svegliarsi con il Monte Whitney davanti. Le rocce offrono riparo naturale dal vento."},campingCoords:{lat:36.600,lng:-118.100}},
-{day:11,title:"Alabama Hills → Yosemite",coords:{lat:37.8651,lng:-119.5383},driveTime:"~3h via Tioga Pass",distance:"~220 km",attractions:[
-  {name:"Tuolumne Meadows",desc:"Prateria alpina a 2.600 metri circondata da cime granitiche. Il fiume Tuolumne serpeggia tra fiori selvatici e pascoli. Un'oasi di pace lontana dalla folla della valle."},
-  {name:"Olmsted Point",desc:"Belvedere che offre una vista frontale su Half Dome e sul canyon di Tenaya. Le lastre di granito lisciate dai ghiacciai creano un terrazzo naturale. Perfetto per fotografie al tramonto."}
-],camping:{name:"Inyo National Forest (Tioga Pass Est) o Sierra National Forest",desc:"Tioga Pass East offre camping a quota tra laghi alpini e praterie. Le temperature notturne possono scendere sotto zero anche in agosto. Porta attrezzatura adeguata per il freddo di montagna."},campingCoords:{lat:37.900,lng:-119.200}},
-{day:12,title:"Yosemite → San Francisco",coords:{lat:37.7749,lng:-122.4194},driveTime:"~4h",distance:"~290 km",attractions:[
-  {name:"Tunnel View",desc:"Il panorama più iconico di Yosemite, reso celebre da Ansel Adams. Da qui si vedono El Capitan, Bridalveil Fall e Half Dome in un unico colpo d'occhio. Qualsiasi ora del giorno è magica, ma l'alba è indimenticabile."},
-  {name:"Yosemite Falls",desc:"Le cascate più alte del Nord America con un salto totale di 739 metri. Il sentiero fino alla cima è impegnativo ma ripagato da viste eccezionali. In primavera il flusso d'acqua è al massimo."},
-  {name:"Mirror Lake",desc:"Lago stagionale che riflette perfettamente le pareti di granito circostanti. Il sentiero pianeggiante è adatto a tutti e attraversa boschi di pini. In estate il lago si riduce ma il paesaggio resta incantevole."}
-],camping:{name:"Marin Headlands (GGNRA - a nord del Golden Gate)",desc:"Area protetta con viste spettacolari sul ponte Golden Gate e sulla baia. I campeggi sono limitati e richiedono prenotazione. La nebbia serale è frequente ma aggiunge un fascio misterioso all'esperienza."},campingCoords:{lat:37.830,lng:-122.500}},
-{day:13,title:"San Francisco",coords:{lat:37.8080,lng:-122.4177},driveTime:null,distance:null,attractions:[
-  {name:"Golden Gate Bridge",desc:"Il ponte sospeso più fotografato al mondo, simbolo di San Francisco. Il colore International Orange fu scelto per contrastare con la nebbia. Attraversarlo a piedi o in bici è un'esperienza imperdibile."},
-  {name:"Fisherman's Wharf",desc:"Il porto turistico con i leoni marini di Pier 39, ristoranti di pesce e negozi di souvenir. Il clima è sempre fresco e ventoso, tipico della baia. Non perdere il clam chowder servito nel pane."},
-  {name:"Alcatraz",desc:"La famosa prigione su un'isola nella baia, ora museo nazionale. L'audio tour con voci di ex detenuti e guardie è coinvolgente. Prenota con largo anticipo, i biglietti si esauriscono sempre."},
-  {name:"Lombard Street",desc:"La strada più tortuosa del mondo con 8 curve a gomito tra giardini fioriti. Discesa ripida del 27% che sfida le auto da oltre 80 anni. Un classico spot fotografico della città."},
-  {name:"Haight-Ashbury",desc:"Il quartiere simbolo della Summer of Love del 1967. Negozi vintage, murales psichedelici e atmosfera bohémienne pervadono ogni angolo. Il Golden Gate Park è a pochi passi."},
-  {name:"Twin Peaks",desc:"Due colline che offrono la vista panoramica più completa su San Francisco. Di notte la città sembra un tappeto di luci fino alla baia. Porta una giacca, il vento è sempre forte qui."}
-],camping:{name:"Marin Headlands",desc:"Resta qui per goderti San Francisco senza il caos della città. I sentieri costieri partono direttamente dal campeggio. Al mattino presto il ponte emerge dalla nebbia in uno spettacolo indimenticabile."},campingCoords:{lat:37.830,lng:-122.500}},
-{day:14,title:"San Francisco → Los Angeles",coords:{lat:34.0522,lng:-118.2437},driveTime:"~6h",distance:"~620 km",attractions:[
-  {name:"Pacific Coast Highway",desc:"La strada costiera più spettacolare d'America, costruita a picco sulle scogliere. Ogni curva regala viste sull'Oceano Pacifico e sulle rocce battute dalle onde. Prendila con calma, ogni chilometro vale la sosta."},
-  {name:"Big Sur",desc:"Tratto selvaggio della costa con scogliere a picco, foreste di sequoie e nebbie marine. Il Bixby Creek Bridge è il simbolo fotografico di questa zona. McWay Falls è una cascata che cade direttamente in spiaggia."},
-  {name:"Bixby Bridge",desc:"Ponte ad arco in cemento del 1932 che attraversa una profonda gola sul mare. Alto 85 metri, è uno dei ponti più fotografati della California. Il punto panoramico a nord offre l'inquadratura perfetta."},
-  {name:"Hearst Castle",desc:"Maestosa residenza costruita dal magnate della stampa William Randolph Hearst. 165 stanze, piscine in stile romano e un'incredibile collezione d'arte. I tour guidati raccontano gli eccessi di Hollywood Golden Age."}
-],camping:{name:"Los Padres National Forest (se spezzato in 2 giorni) e rientro a LA",desc:"Los Padres offre camping tra pini marittimi con vista sull'oceano. Se percorri la PCH in un giorno solo, questo è l'ultimo campo base prima del rientro a Los Angeles. Le soste panoramiche lungo la strada sono infinite."},campingCoords:{lat:34.500,lng:-119.800}}
+{day:1,title:"Los Angeles → San Diego",image:"img/day1.jpg",coords:{lat:33.7455,lng:-117.8677},driveTime:"~2h",distance:"~190 km",attractions:[
+  {name:"Venice Beach",image:"img/poi/venice-beach.jpg",desc:"Iconico lungomare di Los Angeles famoso per il suo spirito bohémien. Lungo il Ocean Front Walk trovi skater, artisti di strada e negozi alternativi. Il canale artificiale e la spiaggia ampia lo rendono perfetto per una passeggiata mattutina.",coords:{lat:33.9850,lng:-118.4695},type:"viewpoint"},
+  {name:"Santa Monica Pier",image:"img/poi/santa-monica-pier.jpg",desc:"Storico molo del 1909 con giostre colorate e la celebre ruota panoramica. Il segno End of the Trail della Route 66 attira milioni di visitatori. Al tramonto il panorama sull'Oceano Pacifico è spettacolare.",coords:{lat:34.0094,lng:-118.4973},type:"attraction"},
+  {name:"La Jolla Cove",image:"img/poi/la-jolla-cove.jpg",desc:"Piccola baia incastonata tra scogliere dorate e acque cristalline. Famosa per l'osservazione di leoni marini che si riposano sulle rocce. I sentieri costieri offrono viste mozzafiato sul Pacifico.",coords:{lat:32.8504,lng:-117.2730},type:"viewpoint"},
+  {name:"Sunset Cliffs",image:"img/poi/sunset-cliffs.jpg",desc:"Scogliere a picco sull'oceano nel sud di San Diego, celebri per i tramonti infuocati. Il percorso pedonale serpeggia tra formazioni rocciose e pozze di marea. Un luogo romantico e naturale lontano dal caos urbano.",coords:{lat:32.7185,lng:-117.2530},type:"viewpoint"},
+  {name:"Old Town",image:"img/poi/old-town.jpg",desc:"Quartiere storico considerato la culla della California. Case in stile messicano, ristoranti tex-mex autentici e negozi di artigianato rievocano l'atmosfera del vecchio West. Il parco storico offre reenactment gratuiti.",coords:{lat:32.7549,lng:-117.1960},type:"attraction"}
+],camping:{name:"Cleveland National Forest (Laguna Mountain / Pine Valley) o Ocotillo Wells (BLM)",image:"img/poi/cleveland-national-forest-o-ocotillo-wells.jpg",desc:"Laguna Mountain offre camping disperso tra pini e querce a 1.800 metri, con temperature gradevoli anche d'estate. Le aree primitive sono gratuite ma senza servizi. Ocotillo Wells è un'alternativa nel deserto per chi preferisce il caldo e le stelle."},campingCoords:{lat:32.867,lng:-116.467}},
+{day:2,title:"San Diego",image:"img/day2.jpg",coords:{lat:32.7157,lng:-117.1611},driveTime:null,distance:null,attractions:[
+  {name:"Balboa Park",image:"img/poi/balboa-park.jpg",desc:"Uno dei più grandi parchi urbani d'America con oltre 16 musei e giardini tematici. L'architettura spagnola coloniale revival delle facciate è mozzafiato. Il famoso zoo di San Diego si trova proprio qui.",coords:{lat:32.7341,lng:-117.1446},type:"attraction"},
+  {name:"Coronado Island",image:"img/poi/coronado-island.jpg",desc:"Elegante isola collegata alla città dal ponte a cavalcavia. L'Hotel del Coronado, in stile vittoriano, è un monumento storico nazionale. Le spiagge dorate e l'atmosfera rilassata la rendono un gioiello.",coords:{lat:32.6859,lng:-117.1831},type:"viewpoint"},
+  {name:"Quartiere Gaslamp",image:"img/poi/quartiere-gaslamp.jpg",desc:"Centro storico e nightlife di San Diego con edifici vittoriani restaurati. Oltre 90 ristoranti, bar e locali jazz animano le sue strade. Di giorno è perfetto per lo shopping e l'architettura.",coords:{lat:32.7114,lng:-117.1590},type:"attraction"},
+  {name:"Torrey Pines State Reserve",image:"img/poi/torrey-pines-state-reserve.jpg",desc:"Riserva naturale con pini rari e sentieri sulla scogliera che dominano l'oceano. Il sentiero del Guy Fleming Trail è accessibile e offre panorami incredibili. Un'oasi di natura selvaggia a pochi minuti dalla città.",coords:{lat:32.9210,lng:-117.2420},type:"viewpoint"}
+],camping:{name:"Cleveland National Forest o ai bordi dell'Anza-Borrego Desert",image:"img/poi/cleveland-national-forest-o-ai-bordi-dellanza-borrego-desert.jpg",desc:"I bordi orientali dell'Anza-Borrego offrono camping BLM gratuito con viste spettacolari sul deserto. Porta tutta l'acqua necessaria, non ci sono fonti. Le notti sono silenziose e il cielo stellato è tra i più limpidi della California."},campingCoords:{lat:33.100,lng:-116.300}},
+{day:3,title:"San Diego → Joshua Tree",image:"img/day3.jpg",coords:{lat:33.8734,lng:-115.9010},driveTime:"~3h",distance:"~270 km",attractions:[
+  {name:"Anza-Borrego Desert (sculture Galleta Meadows)",image:"img/poi/anza-borrego-desert.jpg",desc:"Nel deserto più grande della California, 130 sculture metalliche di animali preistorici emergono dalla sabbia. L'opera dell'artista Ricardo Breceda crea un contrasto surreale con il paesaggio arido. Meglio visitarle all'alba o al tramonto.",coords:{lat:33.0780,lng:-116.1280},type:"attraction"},
+  {name:"Skull Rock",image:"img/poi/skull-rock.jpg",desc:"Formazione rocciosa naturale a forma di teschio, una delle icone più fotografate del parco. Si trova a bordo strada ed è accessibile con una breve camminata. Al tramonto le ombre enfatizzano la forma inquietante.",coords:{lat:33.9900,lng:-116.0600},type:"viewpoint"},
+  {name:"Hidden Valley",image:"img/poi/hidden-valley.jpg",desc:"Anfiteatro naturale circondato da massi giganti, un tempo rifugio di banditi di bestiame. Un sentiero facile di 1,6 km attraversa il cuore della valle. I climbers la adorano per le sue vie di arrampicata.",coords:{lat:34.0110,lng:-116.1680},type:"nature"},
+  {name:"Keys View",image:"img/poi/keys-view.jpg",desc:"Belvedere a 1.585 metri che offre una vista a 360 gradi sul Coachella Valley. Nelle giornate limpide si scorge persino il confine messicano. Il tramonto qui è tra i più spettacolari del parco.",coords:{lat:33.9270,lng:-116.1850},type:"viewpoint"},
+  {name:"Cholla Cactus Garden",image:"img/poi/cholla-cactus-garden.jpg",desc:"Foresta di cactus teddy bear che sembrano soffici ma nascondono spine micidiali. Il sentiero corto attraversa migliaia di esemplari illuminati dal sole del mattino. Un paesaggio alieno che sembra venire da un altro pianeta.",coords:{lat:33.9240,lng:-115.9280},type:"nature"}
+],camping:{name:"Dispersed camping BLM a Wonder Valley / Old Woman Springs Rd",image:"img/poi/dispersed-camping-blm-a-wonder-valley-old-woman-springs-rd.jpg",desc:"Wonder Valley è una terra di nessuno nel deserto del Mojave con vecchie cabine abbandonate e infiniti spazi aperti. Il camping disperso è gratuito e regolamentato dalle norme BLM. Perfetto per chi cerca isolamento assoluto e tramonti infuocati."},campingCoords:{lat:34.150,lng:-116.400}},
+{day:4,title:"Joshua Tree → Grand Canyon South Rim",image:"img/day4.jpg",coords:{lat:35.9881,lng:-112.1251},driveTime:"~5-6h",distance:"~520 km",attractions:[
+  {name:"Deserto del Mojave",image:"img/poi/deserto-del-mojave.jpg",desc:"Il deserto più arido del Nord America, caratterizzato da distese di sabbia e cactus Joshua. La strada attraversa paesaggi lunari che sembrano non finire mai. Fai attenzione alle temperature estreme.",coords:{lat:34.8000,lng:-115.2000},type:"viewpoint"},
+  {name:"Route 66 in Arizona",image:"img/poi/route-66-in-arizona.jpg",desc:"Il tratto storico della Mother Road attraversa cittadine fantasma e diner retrò. Hackberry e Seligman conservano l'atmosfera degli anni '50. Fermati per una foto con le auto d'epoca arrugginite.",coords:{lat:35.3680,lng:-113.7240},type:"attraction"}
+],camping:{name:"Kaibab National Forest (FR 302/303/688 vicino Tusayan)",image:"img/poi/kaibab-national-forest.jpg",desc:"Le forestali 302 e 303 offrono decine di spiazzi per camper immersi nella pineta. Gratuito e a soli 15 minuti dall'ingresso South Rim. I cervi e i coyote sono frequenti visitatori al tramonto."},campingCoords:{lat:35.950,lng:-112.100}},
+{day:5,title:"Grand Canyon South Rim",image:"img/day5.jpg",coords:{lat:36.0544,lng:-112.1401},driveTime:null,distance:null,attractions:[
+  {name:"Mather Point",image:"img/poi/mather-point.jpg",desc:"Il primo belvedere che incontrano la maggior parte dei visitatori, con viste iconiche sul canyon. La piattaforma di osservazione è accessibile e ben attrezzata. Perfetto per l'alba quando le pareti si tingono di rosso.",coords:{lat:36.0570,lng:-112.1090},type:"viewpoint"},
+  {name:"Yavapai Point",image:"img/poi/yavapai-point.jpg",desc:"Offre una delle vedute più geologicamente istruttive del canyon grazie al museo sul bordo. Le vetrine spiegano la formazione delle rocce sottostanti. Il panorama si estende per oltre 30 km in giornate limpide.",coords:{lat:36.0650,lng:-112.1170},type:"viewpoint"},
+  {name:"Rim Trail",image:"img/poi/rim-trail.jpg",desc:"Sentiero panoramico di 20 km che segue il bordo del canyon. Il tratto tra Mather Point e Yavapai è pianeggiante e accessibile a tutti. Ogni curva regala angoli diversi e prospettive uniche.",coords:{lat:36.0570,lng:-112.1090},type:"viewpoint"},
+  {name:"Hopi Point",image:"img/poi/hopi-point.jpg",desc:"Considerato uno dei migliori punti per il tramonto sul South Rim. Si affaccia direttamente sul fiume Colorado in fondo al canyon. Meno affollato dei punti principali, offre intimità e silenzio.",coords:{lat:36.0460,lng:-112.1170},type:"viewpoint"},
+  {name:"Desert View Watchtower",image:"img/poi/desert-view-watchtower.jpg",desc:"Torre di pietra in stile Anasazi progettata dall'architetto Mary Colter. Salendo i 4 piani si gode di una vista a 360 gradi che abbraccia il fiume Colorado. Gli affreschi interni sono opera di artisti Hopi.",coords:{lat:36.0415,lng:-111.8260},type:"viewpoint"}
+],camping:{name:"Kaibab National Forest",image:"img/poi/kaibab-national-forest.jpg",desc:"Soggiorna nella stessa zona del giorno precedente per esplorare il canyon all'alba. Le temperature notturne sono fresche anche in agosto, porta un sacco a pelo pesante. Il silenzio della foresta contrasta con l'immensità del canyon vicino."},campingCoords:{lat:36.000,lng:-112.100}},
+{day:6,title:"Grand Canyon → Page → Zion",image:"img/day6.jpg",coords:{lat:36.9147,lng:-111.4558},driveTime:"~4-5h",distance:"~380 km",attractions:[
+  {name:"Antelope Canyon",image:"img/poi/antelope-canyon.jpg",desc:"Slot canyon di arenaria rossa scavato dall'acqua nel corso di millenni. I fasci di luce che filtrano dall'alto creano giochi di colore surreali. L'accesso è consentito solo con guide Navajo.",coords:{lat:36.8619,lng:-111.3743},type:"nature"},
+  {name:"Horseshoe Bend",image:"img/poi/horseshoe-bend.jpg",desc:"Curva a ferro di cavallo del fiume Colorado incastonata tra pareti di roccia rossa alta 300 metri. Il punto panoramico è a pochi minuti di cammino dal parcheggio. Al tramonto i colori del canyon diventano incandescenti.",coords:{lat:36.8790,lng:-111.5100},type:"viewpoint"}
+],camping:{name:"Kanab/Virgin, BLM Kolob Terrace Road o Dixie National Forest",image:"img/poi/kanabvirgin-blm-kolob-terrace-road-o-dixie-national-forest.jpg",desc:"Kolob Terrace Road offre camping disperso con viste su formazioni rocciose rosse e arancioni. Dixie National Forest è un'alternativa più fresca tra abeti rossi. Entrambe le opzioni sono strategiche per Zion e Page."},campingCoords:{lat:37.200,lng:-113.050}},
+{day:7,title:"Zion National Park",image:"img/day7.jpg",coords:{lat:37.2982,lng:-113.0263},driveTime:null,distance:null,attractions:[
+  {name:"The Narrows",image:"img/poi/the-narrows.jpg",desc:"Il sentiero più iconico di Zion attraversa il fiume Virgin tra pareti di roccia alte 300 metri. In alcuni tratti devi camminare nell'acqua fino alla vita. È un'esperienza immersiva unica nel suo genere.",coords:{lat:37.3090,lng:-113.0960},type:"nature"},
+  {name:"Emerald Pools",image:"img/poi/emerald-pools.jpg",desc:"Tre piscine naturali collegate da cascate che scendono tra la vegetazione. Il sentiero è moderato e offre viste spettacolari sul canyon. Le pozze verdi smeraldo danno il nome all'itinerario.",coords:{lat:37.2580,lng:-112.9500},type:"nature"},
+  {name:"Angels Landing",image:"img/poi/angels-landing.jpg",desc:"Trek impegnativo con catene di sicurezza su un crinale stretto a 450 metri d'altezza. La vista dalla cima abbraccia tutto il canyon di Zion. Non è consigliato a chi soffre di vertigini.",coords:{lat:37.2690,lng:-112.9480},type:"viewpoint"},
+  {name:"Canyon Overlook Trail",image:"img/poi/canyon-overlook-trail.jpg",desc:"Breve sentiero di 1,6 km che conduce a un belvedere mozzafiato sulla gola di Pine Creek. Perfetto all'alba quando il sole illumina le pareti rosse. Molto meno affollato dei sentieri principali.",coords:{lat:37.2130,lng:-112.9410},type:"viewpoint"}
+],camping:{name:"Stessa zona (Kanab/Virgin BLM)",image:"img/poi/stessa-zona.jpg",desc:"Resta nella stessa area per evitare di spostare il campo base. Da qui raggiungi facilmente l'ingresso di Zion in 30 minuti. Le albe nel deserto circostante valgono una sveglia all'indomani."},campingCoords:{lat:37.200,lng:-113.050}},
+{day:8,title:"Zion → Las Vegas",image:"img/day8.jpg",coords:{lat:36.1699,lng:-115.1398},driveTime:"~3h",distance:"~270 km",attractions:[
+  {name:"Valley of Fire State Park",image:"img/poi/valley-of-fire-state-park.jpg",desc:"Il parco statale più antico del Nevada, famoso per le formazioni di arenaria rossa intensa. Petrogliﬁ di 2.000 anni fa decorano le rocce. Il paesaggio sembra Marte con sfumature di rosso e arancione.",coords:{lat:36.4010,lng:-114.5120},type:"viewpoint"},
+  {name:"The Strip",image:"img/poi/the-strip.jpg",desc:"Il cuore pulsante di Las Vegas con i suoi hotel-casino monumentali. Fontane, vulcani e piramidi si susseguono per 6 km. Di sera l'illuminazione crea un'atmosfera surreale e unica al mondo.",coords:{lat:36.1147,lng:-115.1728},type:"attraction"},
+  {name:"Fremont Street",image:"img/poi/fremont-street.jpg",desc:"Il centro storico di Las Vegas con il famoso baldacchino LED di 5 km. Artisti di strada, zip line e musica dal vivo animano ogni sera. Più autentica e meno costosa della Strip.",coords:{lat:36.1710,lng:-115.1440},type:"attraction"}
+],camping:{name:"Spring Mountains National Recreation Area (Lee Canyon / Kyle Canyon)",image:"img/poi/spring-mountains-national-recreation-area.jpg",desc:"A soli 45 minuti da Las Vegas, questa area offre un fresco rifugio montano a 2.500 metri. I campeggi sono attrezzati con tavoli e bagni. La temperatura è di 10-15 gradi inferiore rispetto alla città."},campingCoords:{lat:36.300,lng:-115.650}},
+{day:9,title:"Las Vegas → Death Valley",image:"img/day9.jpg",coords:{lat:36.5323,lng:-116.9325},driveTime:"~2.5h",distance:"~220 km",attractions:[
+  {name:"Zabriskie Point",image:"img/poi/zabriskie-point.jpg",desc:"Belvedere su formazioni di fango vulcanico erose in guglie e creste color ocra. Al mattino presto le ombre creano contrasti drammatici. Sembra un paesaggio marziano dipinto con colori pastello.",coords:{lat:36.4200,lng:-116.8100},type:"viewpoint"},
+  {name:"Badwater Basin",image:"img/poi/badwater-basin.jpg",desc:"Il punto più basso del Nord America a 86 metri sotto il livello del mare. Un lago salato essiccato crea un esagonale bianco infinito. La temperatura qui ha raggiunto i 56,7°C.",coords:{lat:36.2300,lng:-116.7670},type:"viewpoint"},
+  {name:"Artist's Drive",image:"img/poi/artists-drive.jpg",desc:"Strada panoramica di 14 km che attraversa colline minerali colorate. La Palette mostra sfumature di verde, rosa, viola e giallo. Il contrasto con il deserto circostante è sorprendente.",coords:{lat:36.3630,lng:-116.8010},type:"viewpoint"},
+  {name:"Mesquite Flat Sand Dunes",image:"img/poi/mesquite-flat-sand-dunes.jpg",desc:"Dune di sabbia che si estendono fino all'orizzonte, incorniciate da montagne. Il meglio è all'alba quando la luce laterale crea ombre profonde. Un classico paesaggio da deserto del Sahara americano.",coords:{lat:36.6070,lng:-117.1080},type:"viewpoint"}
+],camping:{name:"Wildrose o Panamint Springs (in quota)",image:"img/poi/wildrose-o-panamint-springs.jpg",desc:"Wildrose si trova a 1.200 metri, dove le temperature notturne sono sopportabili anche in piena estate. Panamint Springs offre un campeggio con servizi base e un ristorante rustico. Entrambi sono strategici per esplorare la valle all'alba."},campingCoords:{lat:36.450,lng:-117.100}},
+{day:10,title:"Death Valley → Alabama Hills / Lone Pine",image:"img/day10.jpg",coords:{lat:36.6062,lng:-118.1004},driveTime:"~2.5h",distance:"~180 km",attractions:[
+  {name:"Mobius Arch",image:"img/poi/mobius-arch.jpg",desc:"Arco naturale di granito che incornicia perfettamente il Monte Whitney. È il più fotografato degli archi delle Alabama Hills. L'alba illumina la montagna attraverso l'apertura rocciosa.",coords:{lat:36.6870,lng:-118.1000},type:"viewpoint"},
+  {name:"Vista Mt. Whitney",image:"img/poi/vista-mt-whitney.jpg",desc:"Il punto più alto degli Stati Uniti continentali a 4.421 metri. Dalle Alabama Hills si gode di una vista frontale mozzafiato. Il contrasto tra il deserto sottostante e la neve eterna è impressionante.",coords:{lat:36.6062,lng:-118.1004},type:"viewpoint"}
+],camping:{name:"Alabama Hills (BLM, Movie Road)",image:"img/poi/alabama-hills.jpg",desc:"Movie Road attraversa le formazioni rocciose dove Hollywood ha girato centinaia di western. Il camping BLM è gratuito e permette di svegliarsi con il Monte Whitney davanti. Le rocce offrono riparo naturale dal vento."},campingCoords:{lat:36.600,lng:-118.100}},
+{day:11,title:"Alabama Hills → Yosemite",image:"img/day11.jpg",coords:{lat:37.8651,lng:-119.5383},driveTime:"~3h via Tioga Pass",distance:"~220 km",attractions:[
+  {name:"Tuolumne Meadows",image:"img/poi/tuolumne-meadows.jpg",desc:"Prateria alpina a 2.600 metri circondata da cime granitiche. Il fiume Tuolumne serpeggia tra fiori selvatici e pascoli. Un'oasi di pace lontana dalla folla della valle.",coords:{lat:37.8740,lng:-119.3500},type:"nature"},
+  {name:"Olmsted Point",image:"img/poi/olmsted-point.jpg",desc:"Belvedere che offre una vista frontale su Half Dome e sul canyon di Tenaya. Le lastre di granito lisciate dai ghiacciai creano un terrazzo naturale. Perfetto per fotografie al tramonto.",coords:{lat:37.8110,lng:-119.4850},type:"viewpoint"}
+],camping:{name:"Inyo National Forest (Tioga Pass Est) o Sierra National Forest",image:"img/poi/inyo-national-forest-o-sierra-national-forest.jpg",desc:"Tioga Pass East offre camping a quota tra laghi alpini e praterie. Le temperature notturne possono scendere sotto zero anche in agosto. Porta attrezzatura adeguata per il freddo di montagna."},campingCoords:{lat:37.900,lng:-119.200}},
+{day:12,title:"Yosemite → San Francisco",image:"img/day12.jpg",coords:{lat:37.7749,lng:-122.4194},driveTime:"~4h",distance:"~290 km",attractions:[
+  {name:"Tunnel View",image:"img/poi/tunnel-view.jpg",desc:"Il panorama più iconico di Yosemite, reso celebre da Ansel Adams. Da qui si vedono El Capitan, Bridalveil Fall e Half Dome in un unico colpo d'occhio. Qualsiasi ora del giorno è magica, ma l'alba è indimenticabile.",coords:{lat:37.7157,lng:-119.6772},type:"viewpoint"},
+  {name:"Yosemite Falls",image:"img/poi/yosemite-falls.jpg",desc:"Le cascate più alte del Nord America con un salto totale di 739 metri. Il sentiero fino alla cima è impegnativo ma ripagato da viste eccezionali. In primavera il flusso d'acqua è al massimo.",coords:{lat:37.7569,lng:-119.5968},type:"nature"},
+  {name:"Mirror Lake",image:"img/poi/mirror-lake.jpg",desc:"Lago stagionale che riflette perfettamente le pareti di granito circostanti. Il sentiero pianeggiante è adatto a tutti e attraversa boschi di pini. In estate il lago si riduce ma il paesaggio resta incantevole.",coords:{lat:37.7487,lng:-119.5475},type:"nature"}
+],camping:{name:"Marin Headlands (GGNRA - a nord del Golden Gate)",image:"img/poi/marin-headlands.jpg",desc:"Area protetta con viste spettacolari sul ponte Golden Gate e sulla baia. I campeggi sono limitati e richiedono prenotazione. La nebbia serale è frequente ma aggiunge un fascio misterioso all'esperienza."},campingCoords:{lat:37.830,lng:-122.500}},
+{day:13,title:"San Francisco",image:"img/day13.jpg",coords:{lat:37.8080,lng:-122.4177},driveTime:null,distance:null,attractions:[
+  {name:"Golden Gate Bridge",image:"img/poi/golden-gate-bridge.jpg",desc:"Il ponte sospeso più fotografato al mondo, simbolo di San Francisco. Il colore International Orange fu scelto per contrastare con la nebbia. Attraversarlo a piedi o in bici è un'esperienza imperdibile.",coords:{lat:37.8199,lng:-122.4783},type:"viewpoint"},
+  {name:"Fisherman's Wharf",image:"img/poi/fishermans-wharf.jpg",desc:"Il porto turistico con i leoni marini di Pier 39, ristoranti di pesce e negozi di souvenir. Il clima è sempre fresco e ventoso, tipico della baia. Non perdere il clam chowder servito nel pane.",coords:{lat:37.8080,lng:-122.4177},type:"attraction"},
+  {name:"Alcatraz",image:"img/poi/alcatraz.jpg",desc:"La famosa prigione su un'isola nella baia, ora museo nazionale. L'audio tour con voci di ex detenuti e guardie è coinvolgente. Prenota con largo anticipo, i biglietti si esauriscono sempre.",coords:{lat:37.8267,lng:-122.4230},type:"attraction"},
+  {name:"Lombard Street",image:"img/poi/lombard-street.jpg",desc:"La strada più tortuosa del mondo con 8 curve a gomito tra giardini fioriti. Discesa ripida del 27% che sfida le auto da oltre 80 anni. Un classico spot fotografico della città.",coords:{lat:37.8020,lng:-122.4190},type:"attraction"},
+  {name:"Haight-Ashbury",image:"img/poi/haight-ashbury.jpg",desc:"Il quartiere simbolo della Summer of Love del 1967. Negozi vintage, murales psichedelici e atmosfera bohémienne pervadono ogni angolo. Il Golden Gate Park è a pochi passi.",coords:{lat:37.7700,lng:-122.4469},type:"attraction"},
+  {name:"Twin Peaks",image:"img/poi/twin-peaks.jpg",desc:"Due colline che offrono la vista panoramica più completa su San Francisco. Di notte la città sembra un tappeto di luci fino alla baia. Porta una giacca, il vento è sempre forte qui.",coords:{lat:37.7516,lng:-122.4477},type:"viewpoint"}
+],camping:{name:"Marin Headlands",image:"img/poi/marin-headlands.jpg",desc:"Resta qui per goderti San Francisco senza il caos della città. I sentieri costieri partono direttamente dal campeggio. Al mattino presto il ponte emerge dalla nebbia in uno spettacolo indimenticabile."},campingCoords:{lat:37.830,lng:-122.500}},
+{day:14,title:"San Francisco → Los Angeles",image:"img/day14.jpg",coords:{lat:34.0522,lng:-118.2437},driveTime:"~6h",distance:"~620 km",attractions:[
+  {name:"Pacific Coast Highway",image:"img/poi/pacific-coast-highway.jpg",desc:"La strada costiera più spettacolare d'America, costruita a picco sulle scogliere. Ogni curva regala viste sull'Oceano Pacifico e sulle rocce battute dalle onde. Prendila con calma, ogni chilometro vale la sosta.",coords:{lat:36.2700,lng:-121.8080},type:"viewpoint"},
+  {name:"Big Sur",image:"img/poi/big-sur.jpg",desc:"Tratto selvaggio della costa con scogliere a picco, foreste di sequoie e nebbie marine. Il Bixby Creek Bridge è il simbolo fotografico di questa zona. McWay Falls è una cascata che cade direttamente in spiaggia.",coords:{lat:36.2700,lng:-121.8080},type:"viewpoint"},
+  {name:"Bixby Bridge",image:"img/poi/bixby-bridge.jpg",desc:"Ponte ad arco in cemento del 1932 che attraversa una profonda gola sul mare. Alto 85 metri, è uno dei ponti più fotografati della California. Il punto panoramico a nord offre l'inquadratura perfetta.",coords:{lat:36.3715,lng:-121.9018},type:"viewpoint"},
+  {name:"Hearst Castle",image:"img/poi/hearst-castle.jpg",desc:"Maestosa residenza costruita dal magnate della stampa William Randolph Hearst. 165 stanze, piscine in stile romano e un'incredibile collezione d'arte. I tour guidati raccontano gli eccessi di Hollywood Golden Age.",coords:{lat:35.6852,lng:-121.1682},type:"attraction"}
+],camping:{name:"Los Padres National Forest (se spezzato in 2 giorni) e rientro a LA",image:"img/poi/los-padres-national-forest-e-rientro-a-la.jpg",desc:"Los Padres offre camping tra pini marittimi con vista sull'oceano. Se percorri la PCH in un giorno solo, questo è l'ultimo campo base prima del rientro a Los Angeles. Le soste panoramiche lungo la strada sono infinite."},campingCoords:{lat:34.500,lng:-119.800}}
 ];
 
 let map, polyline, segments=[], markers=[], infoWindows=[];
 let activeDay=null;
-let filters={attractions:true,camping:true,route:true};
+let filters={attractions:true,camping:true,route:true,viewpoints:true};
 let isMobile=window.innerWidth<=768;
 
 function initApp(){
@@ -531,7 +561,6 @@ function initMap(){
   buildRoute();
   buildMarkers();
   fitBounds();
-  // Carica posizione salvata se presente
   const savedPos = localStorage.getItem('usaroadtrip_lastpos');
   if(savedPos){
     try{ showUserPosition(JSON.parse(savedPos)); }catch(e){}
@@ -544,7 +573,6 @@ function buildRoute(){
   polyline=new google.maps.Polyline({
     path:path,geodesic:true,strokeColor:'#e85d04',strokeOpacity:.25,strokeWeight:3,map:map
   });
-  // Segmenti individuali per highlight
   for(let i=0;i<itinerary.length-1;i++){
     const seg=new google.maps.Polyline({
       path:[itinerary[i].coords,itinerary[i+1].coords],
@@ -585,7 +613,7 @@ function buildMarkers(){
       stopIW.open(map,stopMarker);
       selectDay(day.day);
     });
-    markers.push({marker:stopMarker,type:'attraction',day:day.day});
+    markers.push({marker:stopMarker,type:'stop',day:day.day});
     infoWindows.push(stopIW);
 
     if(day.campingCoords){
@@ -602,6 +630,28 @@ function buildMarkers(){
       markers.push({marker:campMarker,type:'camping',day:day.day});
       infoWindows.push(campIW);
     }
+
+    if(day.attractions){
+      day.attractions.forEach((attr, aidx)=>{
+        if(!attr.coords) return;
+        const isView = attr.type === 'viewpoint';
+        const poiMarker = new google.maps.Marker({
+          position: attr.coords,
+          map: map,
+          title: attr.name,
+          icon: isView ? createViewpointPin() : createPOIPin(),
+          zIndex: 200 + idx * 10 + aidx
+        });
+        const poiIW = new google.maps.InfoWindow({content: buildPOIInfoWindow(attr, day.day)});
+        poiMarker.addListener('click', ()=>{
+          closeAllInfoWindows();
+          poiIW.open(map, poiMarker);
+          selectDay(day.day);
+        });
+        markers.push({marker: poiMarker, type: isView ? 'viewpoint' : 'poi', day: day.day});
+        infoWindows.push(poiIW);
+      });
+    }
   });
 }
 
@@ -615,6 +665,44 @@ function createCampingPin(){
   return {url:'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg),scaledSize:new google.maps.Size(32,32),anchor:new google.maps.Point(16,16)};
 }
 
+function createPOIPin(){
+  const svg='<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><defs><filter id="s" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,.4)"/></filter></defs><circle cx="14" cy="14" r="12" fill="#00b4d8" stroke="white" stroke-width="2" filter="url(#s)"/><circle cx="14" cy="14" r="5" fill="white"/></svg>';
+  return {url:'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg),scaledSize:new google.maps.Size(28,28),anchor:new google.maps.Point(14,14)};
+}
+
+function createViewpointPin(){
+  const svg='<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><defs><filter id="s" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,.4)"/></filter></defs><circle cx="14" cy="14" r="12" fill="#9b5de5" stroke="white" stroke-width="2" filter="url(#s)"/><path d="M14 8c-3.3 0-6 2.7-6 6s6 8 6 8 6-4.7 6-8-2.7-6-6-6zm0 8.5c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5z" fill="white"/></svg>';
+  return {url:'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg),scaledSize:new google.maps.Size(28,28),anchor:new google.maps.Point(14,14)};
+}
+
+function buildPOIInfoWindow(attr, dayNum){
+  const mapsUrl = 'https://www.google.com/maps/dir/?api=1&destination='+attr.coords.lat+','+attr.coords.lng;
+  let content = '<div class="iw-content">';
+  if(attr.image){
+    content += `<div class="iw-image-header" style="background-image:url('${attr.image}')">`;
+    content += '<button class="iw-close-btn" onclick="event.stopPropagation(); closeAllInfoWindows();" title="Chiudi">';
+    content += '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+    content += '</button>';
+    content += '<div class="iw-image-header-content">';
+    content += '<div class="iw-badge" style="background:linear-gradient(135deg,#9b5de5,#f15bb5);">📍</div>';
+    content += '<div class="iw-title-group">';
+    content += '<div class="iw-title">' + attr.name + '</div>';
+    content += '<div class="iw-day">Giorno ' + dayNum + ' · ' + (attr.type==='viewpoint'?'Vista Panoramica':'Attrazione') + '</div>';
+    content += '</div></div></div>';
+  } else {
+    content += '<div class="iw-header"><div class="iw-badge" style="background:linear-gradient(135deg,#9b5de5,#f15bb5);">📍</div><div class="iw-title-group">';
+    content += '<div class="iw-title">' + attr.name + '</div>';
+    content += '<div class="iw-day">Giorno ' + dayNum + ' · ' + (attr.type==='viewpoint'?'Vista Panoramica':'Attrazione') + '</div></div></div>';
+  }
+  if(attr.desc){
+    content += '<div class="iw-section"><div class="iw-section-title">ℹ️ Info</div><div style="font-size:.78rem;color:var(--t);line-height:1.5;">' + attr.desc + '</div></div>';
+  }
+  content += '<div class="iw-coords">📍 ' + attr.coords.lat.toFixed(4) + ', ' + attr.coords.lng.toFixed(4) + '</div>';
+  content += '<a class="iw-link" href="' + mapsUrl + '" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Apri indicazioni su Google Maps</a>';
+  content += '</div>';
+  return content;
+}
+
 function buildInfoWindowContent(day,type){
   const isCamp=type==='camp';
   const mapsUrl='https://www.google.com/maps/dir/?api=1&destination='+day.coords.lat+','+day.coords.lng;
@@ -624,7 +712,10 @@ function buildInfoWindowContent(day,type){
   content+='<div class="iw-day">Giorno '+day.day+'</div></div></div>';
   if(!isCamp&&day.attractions&&day.attractions.length){
     content+='<div class="iw-section"><div class="iw-section-title">🎯 Da vedere</div><ul class="iw-list">';
-    day.attractions.forEach(a=>content+='<li>'+(a.name||a)+'</li>');
+    day.attractions.forEach(a=>{
+      const c = a.coords ? ' <span style="font-family:monospace;font-size:.7rem;color:var(--tm);opacity:.7;">('+a.coords.lat.toFixed(4)+', '+a.coords.lng.toFixed(4)+')</span>' : '';
+      content+='<li>'+(a.name||a)+c+'</li>';
+    });
     content+='</ul></div>';
   }
   if(day.camping){
@@ -651,11 +742,16 @@ function renderSidebar(){
   const container=document.getElementById('daysList');
   container.innerHTML=itinerary.map((day,idx)=>{
     const campName = day.camping.name || day.camping;
+    const img = day.image || '';
     return `
     <div class="day-card" id="day-${day.day}" onclick="selectDay(${day.day})" style="animation-delay:${idx*0.05}s">
-      <div class="day-card-header">
-        <div class="day-number">${day.day}</div>
-        <div class="day-title-group">
+      <div class="day-card-image-wrap">
+        ${img?`<img src="${img}" alt="${day.title}" class="day-card-image" loading="lazy" onerror="this.style.display='none'">`:''}
+        <div class="day-card-image-overlay"></div>
+        <div class="day-card-image-top">
+          <div class="day-number-badge">${day.day}</div>
+        </div>
+        <div class="day-card-image-bottom">
           <div class="day-title">${day.title}</div>
           ${day.driveTime?`<div class="day-route">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
@@ -663,56 +759,63 @@ function renderSidebar(){
           </div>`:''}
         </div>
       </div>
-      <div class="day-tags">
-        <span class="tag tag-attr">${day.attractions.length} attrazioni</span>
-        <span class="tag tag-camp">⛺ camping</span>
-        ${day.driveTime?'<span class="tag tag-drive">on the road</span>':''}
-      </div>
-      <div class="day-details">
-        <div class="detail-section">
-          <div class="detail-label">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
-            Da vedere
-          </div>
-          <ul class="detail-list">
-            ${day.attractions.map(a=>`<li>${a.name||a}</li>`).join('')}
-          </ul>
+      <div class="day-card-body">
+        <div class="day-tags">
+          <span class="tag tag-attr">${day.attractions.length} attrazioni</span>
+          <span class="tag tag-camp">⛺ camping</span>
+          ${day.driveTime?'<span class="tag tag-drive">on the road</span>':''}
         </div>
-        <div class="detail-section">
-          <div class="detail-label">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22l10-18 10 18"/><path d="M7 22v-8h10v8"/></svg>
-            Dove dormire
+        <div class="day-details">
+          <div class="detail-section">
+            <div class="detail-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+              Da vedere
+            </div>
+            <ul class="detail-list">
+              ${day.attractions.map((a,i)=>{
+                const c = a.coords ? `<span class="poi-coords">${a.coords.lat.toFixed(4)}, ${a.coords.lng.toFixed(4)}</span>` : '';
+                const click = a.coords ? `onclick="event.stopPropagation(); flyToPOI(${day.day},${i})" class="poi-item"` : '';
+                return `<li ${click}>${a.name||a}${c}</li>`;
+              }).join('')}
+            </ul>
           </div>
-          <ul class="detail-list"><li>${campName}</li></ul>
-        </div>
-        <button class="btn-expand" onclick="toggleExpand(${day.day},event)" id="expand-btn-${day.day}">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          Espandi dettagli
-        </button>
-        <div class="day-expanded" id="expanded-${day.day}">
-          <div class="expanded-section">
-            <div class="expanded-title">🎯 Dettagli attrazioni</div>
-            <div class="expanded-list">
-              ${day.attractions.map(a=>`
-                <div class="expanded-item">
-                  <div class="expanded-item-name">${a.name||a}</div>
-                  <div class="expanded-item-desc">${a.desc||''}</div>
-                </div>
-              `).join('')}
+          <div class="detail-section">
+            <div class="detail-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22l10-18 10 18"/><path d="M7 22v-8h10v8"/></svg>
+              Dove dormire
+            </div>
+            <ul class="detail-list"><li>${campName}</li></ul>
+          </div>
+          <button class="btn-expand" onclick="toggleExpand(${day.day},event)" id="expand-btn-${day.day}">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            Espandi dettagli
+          </button>
+          <div class="day-expanded" id="expanded-${day.day}">
+            <div class="expanded-section">
+              <div class="expanded-title">🎯 Dettagli attrazioni</div>
+              <div class="expanded-list">
+                ${day.attractions.map((a,i)=>`
+                  <div class="expanded-item" onclick="event.stopPropagation(); flyToPOI(${day.day},${i})">
+                    <div class="expanded-item-name">${a.name||a} ${a.type==='viewpoint'?'👁️':''}</div>
+                    <div class="expanded-item-desc">${a.desc||''}</div>
+                    ${a.coords?`<div class="expanded-item-coords">📍 ${a.coords.lat.toFixed(5)}, ${a.coords.lng.toFixed(5)}</div>`:''}
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+            <div class="expanded-section">
+              <div class="expanded-title">⛺ Dettagli campeggio</div>
+              <div class="expanded-item" style="margin-top:8px;">
+                <div class="expanded-item-name">${campName}</div>
+                <div class="expanded-item-desc">${day.camping.desc||''}</div>
+              </div>
             </div>
           </div>
-          <div class="expanded-section">
-            <div class="expanded-title">⛺ Dettagli campeggio</div>
-            <div class="expanded-item" style="margin-top:8px;">
-              <div class="expanded-item-name">${campName}</div>
-              <div class="expanded-item-desc">${day.camping.desc||''}</div>
-            </div>
-          </div>
+          <a class="btn-maps" href="https://www.google.com/maps/dir/?api=1&destination=${day.coords.lat},${day.coords.lng}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Apri su Google Maps
+          </a>
         </div>
-        <a class="btn-maps" href="https://www.google.com/maps/dir/?api=1&destination=${day.coords.lat},${day.coords.lng}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Apri su Google Maps
-        </a>
       </div>
     </div>
   `}).join('');
@@ -726,7 +829,7 @@ function selectDay(dayNum){
   map.panTo(day.coords);
   map.setZoom(11);
   highlightSegment(dayNum);
-  const markerEntry=markers.find(m=>m.day===dayNum&&m.type==='attraction');
+  const markerEntry=markers.find(m=>m.day===dayNum&&m.type==='stop');
   if(markerEntry){
     const idx=markers.indexOf(markerEntry);
     const iw=infoWindows[idx];
@@ -780,7 +883,11 @@ function applyFilters(){
   if(polyline) polyline.setMap(filters.route?map:null);
   segments.forEach(seg=>seg.polyline.setMap(filters.route?map:null));
   markers.forEach(({marker,type})=>{
-    const show=type==='camping'?filters.camping:filters.attractions;
+    let show=true;
+    if(type==='camping') show=filters.camping;
+    else if(type==='stop') show=filters.attractions;
+    else if(type==='viewpoint') show=filters.viewpoints;
+    else if(type==='poi') show=filters.attractions;
     marker.setMap(show?map:null);
   });
 }
@@ -865,6 +972,23 @@ function setupMobileDrag(){
   window.addEventListener('mouseup',onEnd);
 }
 
+function flyToPOI(dayNum, attrIdx){
+  const day = itinerary.find(d=>d.day===dayNum);
+  if(!day || !day.attractions[attrIdx] || !day.attractions[attrIdx].coords) return;
+  const attr = day.attractions[attrIdx];
+  if(map){
+    map.panTo(attr.coords);
+    map.setZoom(15);
+  }
+  const tempIW = new google.maps.InfoWindow({
+    content: buildPOIInfoWindow(attr, dayNum),
+    position: attr.coords
+  });
+  closeAllInfoWindows();
+  tempIW.open(map);
+  infoWindows.push(tempIW);
+}
+
 function showUserPosition(loc,accuracy){
   if(!userMarker){
     userMarker = new google.maps.Marker({
@@ -897,7 +1021,6 @@ function centerOnMe(){
   const btn = document.getElementById('locateBtn');
   const saved = localStorage.getItem('usaroadtrip_lastpos');
 
-  // Se c'è una posizione salvata, centrare subito senza chiedere permesso
   if(saved){
     const pos = JSON.parse(saved);
     showUserPosition(pos);
@@ -911,7 +1034,6 @@ function centerOnMe(){
     return;
   }
 
-  // Aggiorna in background
   btn.classList.add('loading');
   navigator.geolocation.getCurrentPosition(
     (pos)=>{
@@ -926,7 +1048,7 @@ function centerOnMe(){
     },
     (err)=>{
       btn.classList.remove('loading');
-      if(saved) return; // già centrato su posizione salvata, non mostrare errore
+      if(saved) return;
       let msg = 'Errore geolocalizzazione';
       if(err.code === 1) msg = 'Permesso negato. Attiva la geolocalizzazione nelle impostazioni.';
       else if(err.code === 2) msg = 'Posizione non disponibile.';
